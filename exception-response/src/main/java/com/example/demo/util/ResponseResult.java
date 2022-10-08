@@ -12,6 +12,7 @@ import java.io.Serializable;
  * @author Thou
  * @date 2022/10/6
  */
+@SuppressWarnings("unused")
 public class ResponseResult<T> implements Serializable {
 
     private static final long serialVersionUID = 1997384422946860831L;
@@ -68,7 +69,7 @@ public class ResponseResult<T> implements Serializable {
      * @date 2022/10/6
      */
     public static <T> ResponseResult<T> success() {
-        return new ResponseResult<T>(StatusCodeMsgEnum.SUCCESS.getCode(), StatusCodeMsgEnum.SUCCESS.getMessage(), null);
+        return new ResponseResult<>(StatusCodeMsgEnum.SUCCESS.getCode(), StatusCodeMsgEnum.SUCCESS.getMessage(), null);
     }
 
     /**
@@ -80,7 +81,7 @@ public class ResponseResult<T> implements Serializable {
      * @date 2022/10/6
      */
     public static <T> ResponseResult<T> success(T data) {
-        return new ResponseResult<T>(StatusCodeMsgEnum.SUCCESS.getCode(), StatusCodeMsgEnum.SUCCESS.getMessage(), data);
+        return new ResponseResult<>(StatusCodeMsgEnum.SUCCESS.getCode(), StatusCodeMsgEnum.SUCCESS.getMessage(), data);
     }
 
     /**
@@ -92,7 +93,7 @@ public class ResponseResult<T> implements Serializable {
      * @date 2022/10/6
      */
     public static <T> ResponseResult<T> fail(AppException e) {
-        return new ResponseResult<T>(e.getCode(), e.getMessage(), null);
+        return new ResponseResult<>(e.getCode(), e.getMessage(), null);
     }
 
     /**
@@ -105,6 +106,6 @@ public class ResponseResult<T> implements Serializable {
      * @date 2022/10/6
      */
     public static <T> ResponseResult<T> fail(String status, String message) {
-        return new ResponseResult<T>(status, message, null);
+        return new ResponseResult<>(status, message, null);
     }
 }
