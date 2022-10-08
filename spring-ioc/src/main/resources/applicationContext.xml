@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+
+    <bean id="student" class="com.example.demo.pojo.Student" scope="prototype">
+        <property name="id" value="1"/>
+        <property name="name" value="李子明"/>
+        <property name="classRoom" ref="classRoom"/>
+    </bean>
+
+    <bean id="classRoom" class="com.example.demo.pojo.ClassRoom">
+        <property name="name" value="三年二班"/>
+        <property name="teacher" ref="teacher"/>
+    </bean>
+
+    <bean id="teacher" class="com.example.demo.pojo.Teacher">
+        <property name="name" value="王老师"/>
+    </bean>
+</beans>
