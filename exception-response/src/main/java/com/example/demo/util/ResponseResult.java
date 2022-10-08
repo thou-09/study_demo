@@ -69,7 +69,7 @@ public class ResponseResult<T> implements Serializable {
      * @date 2022/10/6
      */
     public static <T> ResponseResult<T> success() {
-        return new ResponseResult<>(StatusCodeMsgEnum.SUCCESS.getCode(), StatusCodeMsgEnum.SUCCESS.getMessage(), null);
+        return success(null);
     }
 
     /**
