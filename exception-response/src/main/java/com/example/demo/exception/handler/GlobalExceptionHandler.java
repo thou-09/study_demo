@@ -20,17 +20,17 @@ import java.util.Objects;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler({Exception.class})
-    public ResponseResult handlerException(Exception e) {
+    private ResponseResult<String> handlerException(Exception e) {
         return ResponseResult.fail("50000", "服务器繁忙");
     }
 
     @ExceptionHandler({AppException.class})
-    private ResponseResult handlerAppException(AppException e) {
+    private ResponseResult<String> handlerAppException(AppException e) {
         return ResponseResult.fail(e);
     }
 
     @ExceptionHandler({MethodArgumentNotValidException.class})
-    private ResponseResult handlerMethodArgumentNotValidException(MethodArgumentNotValidException e) {
+    private ResponseResult<String> handlerMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         BindingResult bindingResult = e.getBindingResult();
         String message = null;
         if (bindingResult.hasErrors()) {

@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @author Thou
  * @date 2022/10/6
  */
-public class ResponseResult implements Serializable {
+public class ResponseResult<T> implements Serializable {
 
     private static final long serialVersionUID = 1997384422946860831L;
     /**
@@ -26,11 +26,11 @@ public class ResponseResult implements Serializable {
     /**
      * 响应数据
      */
-    private Object data;
+    private T data;
 
     private ResponseResult() {}
 
-    private ResponseResult(String status, String message, Object data) {
+    private ResponseResult(String status, String message, T data) {
         this.statusCode = status;
         this.message = message;
         this.data = data;
@@ -52,11 +52,11 @@ public class ResponseResult implements Serializable {
         this.message = message;
     }
 
-    public Object getData() {
+    public T getData() {
         return data;
     }
 
-    public void setData(Object data) {
+    public void setData(T data) {
         this.data = data;
     }
 
@@ -67,8 +67,8 @@ public class ResponseResult implements Serializable {
      * @author Thou
      * @date 2022/10/6
      */
-    public static ResponseResult success() {
-        return new ResponseResult(StatusCodeMsgEnum.SUCCESS.getCode(), StatusCodeMsgEnum.SUCCESS.getMessage(), null);
+    public static <T> ResponseResult<T> success() {
+        return new ResponseResult<T>(StatusCodeMsgEnum.SUCCESS.getCode(), StatusCodeMsgEnum.SUCCESS.getMessage(), null);
     }
 
     /**
@@ -79,8 +79,8 @@ public class ResponseResult implements Serializable {
      * @author Thou
      * @date 2022/10/6
      */
-    public static ResponseResult success(Object data) {
-        return new ResponseResult(StatusCodeMsgEnum.SUCCESS.getCode(), StatusCodeMsgEnum.SUCCESS.getMessage(), data);
+    public static <T> ResponseResult<T> success(T data) {
+        return new ResponseResult<T>(StatusCodeMsgEnum.SUCCESS.getCode(), StatusCodeMsgEnum.SUCCESS.getMessage(), data);
     }
 
     /**
@@ -91,8 +91,8 @@ public class ResponseResult implements Serializable {
      * @author Thou
      * @date 2022/10/6
      */
-    public static ResponseResult fail(AppException e) {
-        return new ResponseResult(e.getCode(), e.getMessage(), null);
+    public static <T> ResponseResult<T> fail(AppException e) {
+        return new ResponseResult<T>(e.getCode(), e.getMessage(), null);
     }
 
     /**
@@ -104,7 +104,7 @@ public class ResponseResult implements Serializable {
      * @author Thou
      * @date 2022/10/6
      */
-    public static ResponseResult fail(String status, String message) {
-        return new ResponseResult(status, message, null);
+    public static <T> ResponseResult<T> fail(String status, String message) {
+        return new ResponseResult<T>(status, message, null);
     }
 }

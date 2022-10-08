@@ -6,6 +6,9 @@ import com.example.demo.util.ResponseResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * DemoController.
  *
@@ -35,5 +38,13 @@ public class DemoController {
     public ResponseResult func4() {
         int i = 1 / 0;
         return ResponseResult.success();
+    }
+
+    @GetMapping("/func5")
+    public ResponseResult<Map> fucn5() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("1", "tom");
+        map.put("2", "jerry");
+        return ResponseResult.success(map);
     }
 }
