@@ -24,8 +24,11 @@ public class AuthorityInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         // 获取用户正在访问的 uri
         String uri = request.getRequestURI();
+        // 获取请求方式
+        String method = request.getMethod();
         // 根据 uri 获取对应的权限
-        Set<String> uriRoles = AuthorityCacheManager.URI_ROLE_MAP.get(uri);
+        String key = method + uri;
+        Set<String> uriRoles = AuthorityCacheManager.URI_ROLE_MAP.get(key);
         // 没有对应的缓存，或权限为空，代表允许匿名访问，直接放行
         if (Objects.isNull(uriRoles) || uriRoles.isEmpty()) {
             return true;

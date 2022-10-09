@@ -95,29 +95,39 @@ public class AuthorityConfigGenerator {
                         Annotation anno = method.getDeclaredAnnotation(clazz);
                         if (anno instanceof RequestMapping) {
                             RequestMapping annoMapping = (RequestMapping)anno;
-                            keySuffix = annoMapping.value()[0];
+                            if (annoMapping.value().length != 0) {
+                                keySuffix = annoMapping.value()[0];
+                            }
+                            key = keyPrefix + keySuffix;
                         }
                         if (anno instanceof GetMapping) {
                             GetMapping annoMapping = (GetMapping)anno;
-                            keySuffix = annoMapping.value()[0];
+                            if (annoMapping.value().length != 0) {
+                                keySuffix = annoMapping.value()[0];
+                            }
+                            key = "GET" + keyPrefix + keySuffix;
                         }
                         if (anno instanceof PostMapping) {
                             PostMapping annoMapping = (PostMapping)anno;
-                            keySuffix = annoMapping.value()[0];
+                            if (annoMapping.value().length != 0) {
+                                keySuffix = annoMapping.value()[0];
+                            }
+                            key = "POST" + keyPrefix + keySuffix;
                         }
                         if (anno instanceof PutMapping) {
                             PutMapping annoMapping = (PutMapping)anno;
-                            keySuffix = annoMapping.value()[0];
+                            if (annoMapping.value().length != 0) {
+                                keySuffix = annoMapping.value()[0];
+                            }
+                            key = "PUT" + keyPrefix + keySuffix;
                         }
                         if (anno instanceof DeleteMapping) {
                             DeleteMapping annoMapping = (DeleteMapping)anno;
-                            keySuffix = annoMapping.value()[0];
+                            if (annoMapping.value().length != 0) {
+                                keySuffix = annoMapping.value()[0];
+                            }
+                            key = "DELETE" + keyPrefix + keySuffix;
                         }
-                        if (anno instanceof PatchMapping) {
-                            PatchMapping annoMapping = (PatchMapping)anno;
-                            keySuffix = annoMapping.value()[0];
-                        }
-                        key = keyPrefix + keySuffix;
                         URI_LIST.add(key + "=");
                         break;
                     }
