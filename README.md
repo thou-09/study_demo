@@ -12,3 +12,6 @@ SpringBoot 使用拦截器自定义接口权限校验
 
 ### 5. repeat-submit
 防止表单重复提交（使用验证 url 和 data 的方式、使用 session 和 token 验证）
+
+### 6. redis-lock
+使用 redis 实现分布式锁
