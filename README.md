@@ -15,3 +15,6 @@ SpringBoot 使用拦截器自定义接口权限校验
 
 ### 6. redis-lock
 使用 redis 实现分布式锁
+
+### 7. rabbitmq-study
+rabbitmq 学习
