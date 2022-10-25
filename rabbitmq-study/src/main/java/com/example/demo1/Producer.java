@@ -7,7 +7,7 @@ import com.rabbitmq.client.ConnectionFactory;
 import java.nio.charset.StandardCharsets;
 
 /**
- * Producer.
+ * Producer. 简单模式
  *
  * @author Thou
  * @date 2022/10/25
